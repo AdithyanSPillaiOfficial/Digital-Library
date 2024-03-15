@@ -1,0 +1,87 @@
+.main {
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    color: black;
+    padding-top: 20px;
+    padding: 10px;
+}
+
+h1 {
+    
+}
+
+.input-search {
+    width: 15vw;
+    height: 20px;
+    min-width: 420px;
+    background-color: #F4F4F4;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    padding: 30px;
+    font-size: 20px;
+
+}
+
+.search-div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+
+.search-icon {
+    margin-top: 0px;
+    margin-left: 10px;
+    padding: 15px;
+    border-radius: 50px;
+    background-color: #F4F4F4;
+}
+
+.search-icon:hover {
+    background-color: #d1d1d1;
+}
+
+.horizontal-line {
+    width: 100vw;
+    height: 2px;
+    background-color: #D3D3D3;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.popular-searches {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+}
+
+.popular-searches-pebble {
+    height: 50px;
+    min-width: 100px;
+    background-color: #F4F4F4;
+    border-radius: 50px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.popular-searches::-webkit-scrollbar {
+    width: 0; /* Set the width of the scrollbar to 0 */
+    height: 0; /* Set the height of the scrollbar to 0 */
+}
+
+.popular-searches-pebble:hover {
+    background-color: #d1d1d1;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .input-search {
+        min-width: 250px;
+    }
+  }
