@@ -6,7 +6,9 @@
     padding-top: 20px;
     padding: 10px;
 }
-
+.sidepanel {
+    max-width: 7vw;
+}
 h1 {
     
 }
