@@ -1,4 +1,6 @@
 .main {
+    display: flex;
+    flex-direction: row;
     width: 100vw;
     height: 100vh;
     background-color: white;
@@ -6,6 +8,11 @@
     padding-top: 20px;
     padding: 10px;
 }
+
+.page {
+    padding-left: 20px;
+}
+
 .sidepanel {
     max-width: 7vw;
 }
