@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 
 
 
-function sidePanel() {
+function SidePanel() {
   const router = useRouter();
   
   useEffect(() => {
@@ -42,4 +42,4 @@ function sidePanel() {
   )
 }
 
-export default sidePanel
+export default SidePanel

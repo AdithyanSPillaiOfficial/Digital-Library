@@ -55,6 +55,27 @@ input {
     font-size: 20px;
 }
 
+.submitbtn:hover {
+    background-color: #49a7ff;
+    box-shadow: 0 2px 8px 2px rgba(0, 0, 0, 0.315);;
+}
+
+.login-input-row {
+    width: 15vw;
+    margin-top: 15px;
+    min-width: 250px;
+
+}
+
+.login-input {
+    display: flex;
+    width: 15vw;
+    min-width: 250px;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+
 
 @media screen and (max-width: 600px) {
     .loginformdiv {
@@ -62,9 +83,20 @@ input {
       height: 100vh;
       width: 100vw;
       border-radius: 0;
+      align-items: center;
+      justify-content: center;
     }
     .image {
         visibility: hidden;
         height: 0px;
+    }
+
+    .login-input-row {
+        width: 250px;
+    
+    }
+
+    .login-input {
+        width: 250px;
     }
   }
