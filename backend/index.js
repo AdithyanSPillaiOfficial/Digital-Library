@@ -21,9 +21,10 @@ app.use(bodyParser.json());
 const username = encodeURIComponent(process.env.DB_UNAME);
 const password = encodeURIComponent(process.env.DB_PASSWORD);
 const conuri = `mongodb+srv://${username}:${password}@cluster0.kf2qhwd.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(conuri);
+
 var database;
 try {
+    const client = new MongoClient(conuri);
     client.connect();
     const dbName = "DigitalLibraryCCET";
     database = client.db(dbName);
@@ -37,23 +38,23 @@ app.get('/', async (req, res) => {
     res.json({ sucess: true, message: 'hello' });
 });
 
-// app.get('/users', async (req, res) => {
-//     const collectionName = "users";
-//     const collection = database.collection(collectionName);
+app.get('/users', async (req, res) => {
+    const collectionName = "users";
+    const collection = database.collection(collectionName);
 
-//     var users = [];
+    var users = [];
 
-//     try {
-//         const cursor = await collection.find();
-//         users = await cursor.toArray();
-//         res.json(users);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({ 'Error': error });
-//     }
+    try {
+        const cursor = await collection.find();
+        users = await cursor.toArray();
+        res.json(users);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ 'Error': error });
+    }
 
 
-// });
+});
 
 
 app.post('/auth', async (req, res) => {

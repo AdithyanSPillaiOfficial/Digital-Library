@@ -4,12 +4,15 @@ import './page.css'
 import loginimage from './loginimage.png'
 import Image from "next/image";
 import TextField from '@mui/material/TextField';
+import { serverAddress } from '../api';
+import { handleSubmit } from './auth';
 
 
 function Login() {
 
     const [uname, setUname] = useState('');
     const [pass, setPass] = useState('');
+
 
     return (
         <div className='maindiv'>
@@ -52,7 +55,19 @@ function Login() {
                                         type='password' />
                                 </div>
                     <br /><br /><br /><br />
-                    <button className='submitbtn'>Login</button>
+                    <button className='submitbtn' onClick={async ()=>{
+                        const status= await handleSubmit(uname,pass);
+                        if(status!=false && status!='error'){
+                            localStorage.setItem('isLogedIn',true);
+                            localStorage.setItem('sessionId',status);
+                            document.location = './search'
+                        }
+                        else {
+                            alert('Login Failed');
+                            console.log(status);
+                        }
+
+                    }}>Login</button>
                 </div>
                 <div>
                     <Image src={loginimage} alt='login image' className='image'></Image>
