@@ -38,11 +38,16 @@ function Search() {
                 <div className='results'>
                     <div className='book'>
                         <Image src={bookthumb} alt='login image' className='thumbimage'></Image>
-                        <div>
+                        <div className='bookprops'>
                             <h1 className='bookname'>Linear Algebra and Calculus</h1>
                             <p>Author name : </p>
                             <p>Department : </p>
-                            <p>SUbject : </p>
+                            <p>Subject : </p>
+                            <div className='bookactionbuttons'>
+                                <button className='actionbutton'>View</button>
+                                <button className='actionbutton'>Save</button>
+                                <button className='actionbutton'>Download</button>
+                            </div>
                         </div>
                     </div>
                 </div>
