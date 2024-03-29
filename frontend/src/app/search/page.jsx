@@ -15,14 +15,23 @@ const abook = {
     name: "Linear Algebra and Calculus"
 };
 
-
-function Search() {
+function checkUserLogin() {
     // Check if user is not logged in and redirect
     if (!localStorage.isLogedIn) {
         // router.push('/login');
-        window.location = '/login';
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+function Search() {    
+    if(!checkUserLogin){
+        window.location('./login');
         return null;
     }
+    // await new Promise(resolve => setTimeout(resolve, 2000));
     const [searchInput, setSearchInput] = useState('');
     var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD']
     return (
