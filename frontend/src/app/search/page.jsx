@@ -27,13 +27,13 @@ function checkUserLogin() {
 }
 
 function Search() {    
+    // await new Promise(resolve => setTimeout(resolve, 2000));
+    const [searchInput, setSearchInput] = useState('');
+    var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD'];
     if(!checkUserLogin){
         window.location('./login');
         return null;
     }
-    // await new Promise(resolve => setTimeout(resolve, 2000));
-    const [searchInput, setSearchInput] = useState('');
-    var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD']
     return (
         <div className='main'>
             <SidePanel className='sidepanel' />
