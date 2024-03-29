@@ -1,16 +1,28 @@
 "use client";
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './page.css'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import SidePanel from '../components/sidepanel/page';
+import Book from '../components/book/book';
 import Image from 'next/image';
 
 import bookthumb from '../assets/bookthumb.png'
 
+const abook = {
+    name: "Linear Algebra and Calculus"
+};
+
+
 function Search() {
+    // Check if user is not logged in and redirect
+    if (!localStorage.isLogedIn) {
+        // router.push('/login');
+        window.location = '/login';
+        return null;
+    }
     const [searchInput, setSearchInput] = useState('');
     var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD']
     return (
@@ -36,20 +48,7 @@ function Search() {
                 </div>
                 <div className="horizontal-line" />
                 <div className='results'>
-                    <div className='book'>
-                        <Image src={bookthumb} alt='login image' className='thumbimage'></Image>
-                        <div className='bookprops'>
-                            <h1 className='bookname'>Linear Algebra and Calculus</h1>
-                            <p>Author name : </p>
-                            <p>Department : </p>
-                            <p>Subject : </p>
-                            <div className='bookactionbuttons'>
-                                <button className='actionbutton'>View</button>
-                                <button className='actionbutton'>Save</button>
-                                <button className='actionbutton'>Download</button>
-                            </div>
-                        </div>
-                    </div>
+                    <Book {...abook} />
                 </div>
             </div>
         </div>
