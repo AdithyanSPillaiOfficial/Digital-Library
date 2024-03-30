@@ -22,10 +22,12 @@ function SidePanel() {
     }
   }, []); 
 
+  const user = JSON.parse(sessionStorage.getItem('user'));
+
 
   return (
     <div className='sidepanel-main'>
-        <Image src={avatar} alt='Avatar' className='avatar'></Image>
+        <Image src={user.image || avatar} alt='Avatar' width={50} height={50} className='avatar' onClick={()=>window.location = '/profile'}></Image>
         <div className='icondiv' onClick={()=>window.location='/'}>
             <FontAwesomeIcon icon={faHome} className='iconbtn' size='3x'/>
             <p className='btnlabel'>Home</p>

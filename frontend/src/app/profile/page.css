@@ -1,0 +1,46 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    color: black;
+    padding-top: 20px;
+    padding: 10px;
+    position: fixed;
+    overflow: auto;
+}
+
+.profile-content {
+    padding: 20px;
+}
+
+.profilediv {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.profilepicdiv {
+    width: 190px;
+    height: 190px;
+    background-color: #D6EBFF;
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.profilepic {
+    scale: 0.85;
+    border-radius: 100px;
+}
+
+.profiledetails {
+    padding: 30px;
+}
+
+.profdetails {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: rgb(107, 107, 107);
+}

@@ -16,7 +16,7 @@ async function handleSubmit(username, password) {
             const data = await responce.json();
             console.log('Data Fetched');
             if(data.status==='sucess'){
-                return(true);
+                return(data.sessionid);
             }
             else {
                 return(false)

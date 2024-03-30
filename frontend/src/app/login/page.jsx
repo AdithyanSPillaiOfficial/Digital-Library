@@ -59,6 +59,9 @@ function Login() {
                         if(status!=false && status!='error'){
                             localStorage.setItem('isLogedIn',true);
                             localStorage.setItem('sessionId',status);
+
+                            //temp adjustment
+                            sessionStorage.setItem('user',JSON.stringify({"name":"Adithyan S Pillai","department":"Computer Science and Engineering","semester":"S6","image":"https://avatars.githubusercontent.com/u/130700552?v=4"}));
                             document.location = './search'
                         }
                         else {
