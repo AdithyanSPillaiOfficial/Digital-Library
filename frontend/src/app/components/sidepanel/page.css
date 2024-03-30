@@ -51,7 +51,7 @@
         /* width: 0; */
         flex-direction: row;
         width: 100%;
-        justify-content: space-around;
+        justify-content: flex-start;
         scale: 0.7;
         border-radius: 50px;
         height: 15vh;
@@ -60,10 +60,16 @@
 
     .logoutbtn {
         margin-top: 20px;
+        
     }
 
     .icondiv {
         margin-bottom: 10px;
+    }
+
+    .logoutbtn {
+        width: 0;
+        visibility: hidden;
     }
 
     

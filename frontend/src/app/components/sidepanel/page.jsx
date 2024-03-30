@@ -5,7 +5,7 @@ import Image from 'next/image'
 import avatar from '/src/app/assets/avatar.jpg'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faLock } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark, faHome, faLock ,faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/navigation';
 
 
@@ -29,6 +29,16 @@ function SidePanel() {
         <div className='icondiv' onClick={()=>window.location='/'}>
             <FontAwesomeIcon icon={faHome} className='iconbtn' size='3x'/>
             <p className='btnlabel'>Home</p>
+        </div>
+
+        <div className='icondiv' onClick={()=>window.location='/search'}>
+            <FontAwesomeIcon icon= {faMagnifyingGlass} className='iconbtn' size='3x'/>
+            <p className='btnlabel'>Search</p>
+        </div>
+
+        <div className='icondiv' onClick={()=>window.location='/'}>
+            <FontAwesomeIcon icon= {faBookmark} className='iconbtn' size='3x'/>
+            <p className='btnlabel'>Saved</p>
         </div>
 
         <div className='icondiv logoutbtn' onClick={()=>{
