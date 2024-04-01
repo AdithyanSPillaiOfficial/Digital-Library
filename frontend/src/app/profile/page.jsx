@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './page.css'
 import SidePanel from '../components/sidepanel/page'
 import Image from 'next/image';
@@ -7,22 +7,24 @@ import Image from 'next/image';
 
 function Profile() {
 
-    var profile = {
+    const [profile, setProfile] = useState({
         image: 'https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-snapchat-circle-512.png',
         name : 'User Not Loged In',
         semester : null,
         department: null,
-    }
-    var googleLogo;
-    try {
-        profile = JSON.parse(sessionStorage.getItem('user'));
-        googleLogo = profile.image;
+    });
 
-    } catch (error) {
-        console.error('User Not Loged In');
-        window.location = '/login';
-        googleLogo = 'https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-snapchat-circle-512.png';
-    }
+    useEffect(() => {
+      if(localStorage.getItem('isLogedIn')){
+        setProfile(JSON.parse(sessionStorage.getItem('user')));
+      }
+      else {
+        window.location = '/login'
+      }
+    
+      
+    }, [])
+    
 
     return (
 
@@ -33,7 +35,7 @@ function Profile() {
                 <h1>Profile</h1>
                 <div className='profilediv'>
                     <div className='profilepicdiv'>
-                        <Image src={googleLogo} width={190} height={190} className='profilepic'></Image>
+                        <Image src={profile.image} width={190} height={190} className='profilepic'></Image>
                     </div>
                     <div className='profiledetails'>
                         <h1>{profile.name}</h1>

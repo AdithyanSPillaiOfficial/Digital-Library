@@ -1,32 +1,42 @@
-"use client";
 import './page.css'
 import Image from 'next/image'
 import avatar from '/src/app/assets/avatar.jpg'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faHome, faLock, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useState } from 'react'
 
 
 
 
 function SidePanel() {
-  let user;
-  if (sessionStorage.getItem('user')) {
-    try {
-      user = JSON.parse(sessionStorage.getItem('user'));
-    } catch (error) {
-      console.error(error);
-      alert(error);
-      // window.location = '/login';
+  const [user, setUser] = useState({
+    image: avatar,
+    name: 'User Not Logged In',
+    semester: null,
+    department: null,
+  });
+  useEffect(() => {
+    if (sessionStorage.getItem('user')) {
+      try {
+        setUser(JSON.parse(sessionStorage.getItem('user')));
+      } catch (error) {
+        console.error(error);
+        alert(error);
+        //window.location = '/login';
+      }
+    } else {
+      setUser({
+        image: avatar,
+        name: 'User Not Logged In',
+        semester: null,
+        department: null,
+      });
     }
-  } else {
-    user = {
-      image: avatar,
-      name: 'User Not Logged In',
-      semester: null,
-      department: null,
-    }
-  }
+  
+    
+  }, [])
+  
 
 
 
