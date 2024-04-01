@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect } from 'react';
 import './page.css'
 import Image from 'next/image'
@@ -14,7 +13,7 @@ import { useRouter } from 'next/navigation';
 function SidePanel() {
   const router = useRouter();
   var user = {
-    image: 'https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-snapchat-circle-512.png',
+    image: avatar,
     name: 'User Not Loged In',
     semester: null,
     department: null,
