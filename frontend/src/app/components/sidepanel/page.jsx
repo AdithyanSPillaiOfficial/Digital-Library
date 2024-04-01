@@ -9,19 +9,22 @@ import { faBookmark, faHome, faLock, faMagnifyingGlass } from '@fortawesome/free
 
 
 function SidePanel() {
-  var user = {
-    image: avatar,
-    name: 'User Not Loged In',
-    semester: null,
-    department: null,
-  }
-  try {
-    user = JSON.parse(sessionStorage.getItem('user')) || user;
-
-  } catch (error) {
-    console.error(error);
-    alert(error);
-    window.location = '/login';
+  let user;
+  if (sessionStorage.getItem('user')) {
+    try {
+      user = JSON.parse(sessionStorage.getItem('user'));
+    } catch (error) {
+      console.error(error);
+      alert(error);
+      // window.location = '/login';
+    }
+  } else {
+    user = {
+      image: avatar,
+      name: 'User Not Logged In',
+      semester: null,
+      department: null,
+    }
   }
 
 
@@ -29,17 +32,17 @@ function SidePanel() {
   return (
     <div className='sidepanel-main'>
       <Image src={user.image || avatar} alt='Avatar' width={50} height={50} className='avatar' onClick={() => window.location = '/profile'}></Image>
-      <div className='icondiv' onClick={() => window.location = '/'}>
+      <div className='icondiv' onClick={() => window.location.pathname !== '/' && (window.location = '/')}>
         <FontAwesomeIcon icon={faHome} className='iconbtn' size='3x' />
         <p className='btnlabel'>Home</p>
       </div>
 
-      <div className='icondiv' onClick={() => window.location = '/search'}>
+      <div className='icondiv' onClick={() => window.location.pathname !== '/search' && (window.location = '/search')}>
         <FontAwesomeIcon icon={faMagnifyingGlass} className='iconbtn' size='3x' />
         <p className='btnlabel'>Search</p>
       </div>
 
-      <div className='icondiv' onClick={() => window.location = '/'}>
+      <div className='icondiv' onClick={() => window.location.pathname !== '/saved' && (window.location = '/saved')}>
         <FontAwesomeIcon icon={faBookmark} className='iconbtn' size='3x' />
         <p className='btnlabel'>Saved</p>
       </div>
