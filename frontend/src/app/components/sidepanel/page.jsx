@@ -4,13 +4,11 @@ import avatar from '/src/app/assets/avatar.jpg'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faHome, faLock, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { useRouter } from 'next/navigation';
 
 
 
 
 function SidePanel() {
-  const router = useRouter();
   var user = {
     image: avatar,
     name: 'User Not Loged In',
