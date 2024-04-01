@@ -13,16 +13,16 @@ import { useRouter } from 'next/navigation';
 
 function SidePanel() {
   const router = useRouter();
+  var user;
   
   useEffect(() => {
     // Check if user is not logged in and redirect
     if (!localStorage.isLogedIn) {
       // router.push('/login');
       window.location = '/login';
+      user = JSON.parse(sessionStorage.getItem('user'));
     }
   }, []); 
-
-  const user = JSON.parse(sessionStorage.getItem('user'));
 
 
   return (
