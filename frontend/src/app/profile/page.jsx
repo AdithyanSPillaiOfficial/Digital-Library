@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react'
 import './page.css'
 import SidePanel from '../components/sidepanel/page'
+import avatar from '../assets/avatar.jpg'
 import Image from 'next/image';
 
 
 function Profile() {
 
     const [profile, setProfile] = useState({
-        image: 'https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-snapchat-circle-512.png',
+        image: avatar,
         name : 'User Not Loged In',
         semester : null,
         department: null,

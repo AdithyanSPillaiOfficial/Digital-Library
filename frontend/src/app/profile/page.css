@@ -44,3 +44,38 @@
     margin-bottom: 5px;
     color: rgb(107, 107, 107);
 }
+
+
+@media screen and (max-width: 600px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .profile-content {
+        padding: 5px;
+    }
+
+    .profilediv {
+        margin-left: 5px;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profilepicdiv {
+        width: 40vw;
+        height: 40vw;
+        overflow: hidden;
+    }
+
+    .profilepic {
+        width: 40vw;
+        height: 40vw;
+    }
+
+    .profiledetails {
+        padding-top: 10px;
+    }
+    
+  }
