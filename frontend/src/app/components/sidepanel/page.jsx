@@ -32,17 +32,17 @@ function SidePanel() {
   return (
     <div className='sidepanel-main'>
       <Image src={user.image || avatar} alt='Avatar' width={50} height={50} className='avatar' onClick={() => window.location = '/profile'}></Image>
-      <div className='icondiv' onClick={() => window.location.pathname !== '/' && (window.location = '/')}>
+      <div className='icondiv' onClick={() => (typeof window !== 'undefined') && (window.location = '/')}>
         <FontAwesomeIcon icon={faHome} className='iconbtn' size='3x' />
         <p className='btnlabel'>Home</p>
       </div>
 
-      <div className='icondiv' onClick={() => window.location.pathname !== '/search' && (window.location = '/search')}>
+      <div className='icondiv' onClick={() => (typeof window !== 'undefined') && (window.location = '/search')}>
         <FontAwesomeIcon icon={faMagnifyingGlass} className='iconbtn' size='3x' />
         <p className='btnlabel'>Search</p>
       </div>
 
-      <div className='icondiv' onClick={() => window.location.pathname !== '/saved' && (window.location = '/saved')}>
+      <div className='icondiv' onClick={() => (typeof window !== 'undefined') && (window.location = '/saved')}>
         <FontAwesomeIcon icon={faBookmark} className='iconbtn' size='3x' />
         <p className='btnlabel'>Saved</p>
       </div>
