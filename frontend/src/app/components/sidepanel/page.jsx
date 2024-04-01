@@ -13,7 +13,9 @@ import { useRouter } from 'next/navigation';
 
 function SidePanel() {
   const router = useRouter();
-  var user;
+  var user = {
+    image: null
+  };
   
   useEffect(() => {
     // Check if user is not logged in and redirect
