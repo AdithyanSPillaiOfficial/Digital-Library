@@ -7,19 +7,22 @@ import Image from 'next/image';
 
 function Profile() {
 
-    var profile={
-        image: null,
-        name: 'Guest',
+    var profile = {
+        image: 'https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-snapchat-circle-512.png',
+        name : 'User Not Loged In',
+        semester : null,
         department: null,
-        semester: null,
     }
-
-    useEffect(() => {
+    var googleLogo;
+    try {
         profile = JSON.parse(sessionStorage.getItem('user'));
-    }, [])
-    
+        googleLogo = profile.image;
 
-    const googleLogo = profile.image || 'https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-snapchat-circle-512.png';
+    } catch (error) {
+        console.error('User Not Loged In');
+        window.location = '/login';
+        googleLogo = 'https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-snapchat-circle-512.png';
+    }
 
     return (
 
