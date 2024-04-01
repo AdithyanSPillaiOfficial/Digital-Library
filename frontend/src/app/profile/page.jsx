@@ -7,7 +7,12 @@ import Image from 'next/image';
 
 function Profile() {
 
-    var profile=null;
+    var profile={
+        image: null,
+        name: 'Guest',
+        department: null,
+        semester: null,
+    }
 
     useEffect(() => {
         profile = JSON.parse(sessionStorage.getItem('user'));
