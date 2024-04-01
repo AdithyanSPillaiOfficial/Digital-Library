@@ -1,3 +1,4 @@
+"use client";
 import './page.css'
 import Image from 'next/image'
 import avatar from '/src/app/assets/avatar.jpg'
