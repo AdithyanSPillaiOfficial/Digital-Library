@@ -16,7 +16,7 @@ function SidePanel() {
     department: null,
   }
   try {
-    user = JSON.parse(sessionStorage.getItem('user'));
+    user = JSON.parse(sessionStorage.getItem('user')) || user;
 
   } catch (error) {
     console.error(error);
