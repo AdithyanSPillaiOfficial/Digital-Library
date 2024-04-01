@@ -6,7 +6,13 @@ import Image from 'next/image';
 
 
 function Profile() {
-    const profile = JSON.parse(sessionStorage.getItem('user'));
+
+    var profile=null;
+
+    useEffect(() => {
+        profile = JSON.parse(sessionStorage.getItem('user'));
+    }, [])
+    
 
     const googleLogo = profile.image || 'https://cdn2.iconfinder.com/data/icons/social-messaging-ui-color-shapes-2-free/128/social-snapchat-circle-512.png';
 
