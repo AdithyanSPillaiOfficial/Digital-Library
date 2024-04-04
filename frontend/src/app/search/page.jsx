@@ -19,6 +19,10 @@ const abook = {
 
 
  function Search() {    
+    
+    const [searchInput, setSearchInput] = useState('');
+    var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD'];
+
     useEffect(() => {
         if(!checkLogin()){
             return <Login />
@@ -28,8 +32,6 @@ const abook = {
     if(!checkLogin()){
         return <Login />
     }
-    const [searchInput, setSearchInput] = useState('');
-    var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD'];
     
     return (
         <div className='main-extra'>
