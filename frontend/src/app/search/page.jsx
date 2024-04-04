@@ -10,32 +10,29 @@ import Book from '../components/book/book';
 import Image from 'next/image';
 
 import bookthumb from '../assets/bookthumb.png'
+import checkLogin from '../components/checklogin/checkLogin';
+import Login from '../login/page';
 
 const abook = {
     name: "Linear Algebra and Calculus"
 };
 
-function checkUserLogin() {
-    // Check if user is not logged in and redirect
-    if (!localStorage.isLogedIn) {
-        // router.push('/login');
-        return false;
-    }
-    else {
-        return true;
-    }
-}
 
-function Search() {    
-    // await new Promise(resolve => setTimeout(resolve, 2000));
+ function Search() {    
+    useEffect(() => {
+        if(!checkLogin()){
+            return <Login />
+        }
+    
+    }, [])
+    if(!checkLogin()){
+        return <Login />
+    }
     const [searchInput, setSearchInput] = useState('');
     var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD'];
-    if(!checkUserLogin){
-        window.location('./login');
-        return null;
-    }
+    
     return (
-        <div className='main'>
+        <div className='main-extra'>
             <SidePanel className='sidepanel' />
             <div className='page'>
                 <h1>Discover New Books</h1>

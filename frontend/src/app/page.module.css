@@ -105,6 +105,11 @@
   transform: translateZ(0);
 }
 
+.maintemp {
+  display: flex;
+  flex-direction: column;
+}
+
 .logo {
   position: relative;
 }

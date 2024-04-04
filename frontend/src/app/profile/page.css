@@ -11,6 +11,12 @@
     overflow: auto;
 }
 
+.main-extra {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+}
+
 .profile-content {
     padding: 20px;
 }

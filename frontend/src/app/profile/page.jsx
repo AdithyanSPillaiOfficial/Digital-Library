@@ -29,7 +29,7 @@ function Profile() {
 
     return (
 
-        <div className='main'>
+        <div className='main-extra'>
 
             <SidePanel />
             <div className='profile-content'>
