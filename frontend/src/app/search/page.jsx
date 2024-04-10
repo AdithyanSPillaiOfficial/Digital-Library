@@ -18,21 +18,19 @@ const abook = {
 };
 
 
- function Search() {    
-    
+function Search() {
+
     const [searchInput, setSearchInput] = useState('');
     var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD'];
-
-    useEffect(() => {
-        if(!checkLogin()){
-            return <Login />
-        }
-    
-    }, [])
-    if(!checkLogin()){
-        return <Login />
+    const logsta = checkLogin();
+    console.log(logsta)
+    if( logsta == false){
+        window.location = '/login';
+        return (
+            null
+        )
     }
-    
+
     return (
         <div className='main-extra'>
             <SidePanel className='sidepanel' />
@@ -63,4 +61,4 @@ const abook = {
     )
 }
 
-export default Search
+export default Search;

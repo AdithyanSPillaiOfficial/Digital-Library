@@ -6,6 +6,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faHome, faLock, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
+import Cookies from 'js-cookie';
+import { adminItems, userItems } from './MenuItems';
 
 
 
@@ -18,9 +20,9 @@ function SidePanel() {
     department: null,
   });
   useEffect(() => {
-    if (sessionStorage.getItem('user')) {
+    if (user != null) {
       try {
-        setUser(JSON.parse(sessionStorage.getItem('user')));
+        setUser(JSON.parse(Cookies.get('user')));
       } catch (error) {
         console.error(error);
         alert(error);
@@ -34,30 +36,32 @@ function SidePanel() {
         department: null,
       });
     }
-  
-    
+
+
   }, [])
-  
+
+  var menuitems = [];
+  if (user.role == 'admin') {
+    menuitems = adminItems;
+  }
+  else if (user.role == 'student' || user.role == 'faculty') {
+    menuitems = userItems;
+  }
 
 
 
   return (
     <div className='sidepanel-main'>
       <Image src={user.image || avatar} alt='Avatar' width={50} height={50} className='avatar' onClick={() => window.location = '/profile'}></Image>
-      <div className='icondiv' onClick={() => (typeof window !== 'undefined') && (window.location = '/')}>
-        <FontAwesomeIcon icon={faHome} className='iconbtn' size='3x' />
-        <p className='btnlabel'>Home</p>
-      </div>
 
-      <div className='icondiv' onClick={() => (typeof window !== 'undefined') && (window.location = '/search')}>
-        <FontAwesomeIcon icon={faMagnifyingGlass} className='iconbtn' size='3x' />
-        <p className='btnlabel'>Search</p>
-      </div>
-
-      <div className='icondiv' onClick={() => (typeof window !== 'undefined') && (window.location = '/saved')}>
-        <FontAwesomeIcon icon={faBookmark} className='iconbtn' size='3x' />
-        <p className='btnlabel'>Saved</p>
-      </div>
+      {
+        menuitems.map((item, index) => (
+          <div key={index} className='icondiv' onClick={() => (typeof window !== 'undefined') && (window.location = item.redirect)}>
+            <FontAwesomeIcon icon={item.icon} className='iconbtn' size='3x' />
+            <p className='btnlabel'>{item.label}</p>
+          </div>
+        ))
+      }
 
       <div className='icondiv logoutbtn' onClick={() => {
         localStorage.removeItem('isLogedIn');

@@ -4,9 +4,20 @@ import './page.css'
 import SidePanel from '../components/sidepanel/page'
 import avatar from '../assets/avatar.jpg'
 import Image from 'next/image';
+import checkLogin from '../components/checklogin/checkLogin';
+import Cookies from 'js-cookie';
 
 
 function Profile() {
+
+    const logsta = checkLogin();
+    console.log(logsta)
+    if( logsta == false){
+        window.location = '/login';
+        return (
+            null
+        )
+    }
 
     const [profile, setProfile] = useState({
         image: avatar,
@@ -16,8 +27,8 @@ function Profile() {
     });
 
     useEffect(() => {
-      if(localStorage.getItem('isLogedIn')){
-        setProfile(JSON.parse(sessionStorage.getItem('user')));
+      if(Cookies.get('user') || profile == null){
+        setProfile(JSON.parse(Cookies.get('user')));
       }
       else {
         window.location = '/login'

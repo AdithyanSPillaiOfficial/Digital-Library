@@ -8,7 +8,6 @@ function checkLogin() {
             return true
         }
         else {
-            window.location = '/login'
             return false
         }
     } catch (error) {
