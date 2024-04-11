@@ -99,6 +99,28 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+
+.main-extra {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.main-new {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  color: black;
+  padding-top: 20px;
+  padding: 10px;
+  position: fixed;
+  overflow: auto;
+}
+
+
 /* 
 @media (prefers-color-scheme: dark) {
   html {

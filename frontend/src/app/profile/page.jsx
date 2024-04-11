@@ -12,12 +12,16 @@ function Profile() {
 
     const logsta = checkLogin();
     console.log(logsta)
-    if( logsta == false){
-        window.location = '/login';
-        return (
-            null
-        )
-    }
+    
+    useEffect(() => {
+        if( window != undefined && logsta == false){
+            window.location = '/login';
+            return (
+                null
+            )
+        }
+    }, [])
+    
 
     const [profile, setProfile] = useState({
         image: avatar,

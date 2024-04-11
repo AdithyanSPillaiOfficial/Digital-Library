@@ -20,16 +20,15 @@ const abook = {
 
 function Search() {
 
+    if(!checkLogin()){
+        return (
+          <h1>Please Login</h1>
+        )
+      }
+
     const [searchInput, setSearchInput] = useState('');
     var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD'];
-    const logsta = checkLogin();
-    console.log(logsta)
-    if( logsta == false){
-        window.location = '/login';
-        return (
-            null
-        )
-    }
+
 
     return (
         <div className='main-extra'>

@@ -8,11 +8,20 @@ import { faBookmark, faHome, faLock, faMagnifyingGlass } from '@fortawesome/free
 import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie';
 import { adminItems, userItems } from './MenuItems';
+import checkLogin from '../checklogin/checkLogin';
 
 
 
 
 function SidePanel() {
+
+  if(!checkLogin()){
+    try { window.location = '/login'; } catch(error) {}
+    return (
+      <h1>Please Login</h1>
+    )
+  }
+
   const [user, setUser] = useState({
     image: avatar,
     name: 'User Not Logged In',
