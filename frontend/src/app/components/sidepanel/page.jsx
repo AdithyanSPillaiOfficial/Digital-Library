@@ -4,7 +4,7 @@ import Image from 'next/image'
 import avatar from '/src/app/assets/avatar.jpg'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBookmark, faHome, faLock, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faBookmark, faHome, faLock, faMagnifyingGlass, faSignOut } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import Cookies from 'js-cookie';
 import { adminItems, userItems } from './MenuItems';
@@ -78,7 +78,7 @@ function SidePanel() {
         localStorage.removeItem('isLogedIn');
         window.location = '/login';
       }}>
-        <FontAwesomeIcon icon={faLock} className='iconbtn' size='3x' />
+        <FontAwesomeIcon icon={faSignOut} className='iconbtn' size='3x' />
         <p className='btnlabel'>Log Out</p>
       </div>
     </div>
