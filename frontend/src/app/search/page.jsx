@@ -20,14 +20,14 @@ const abook = {
 
 function Search() {
 
+    const [searchInput, setSearchInput] = useState('');
+    var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD'];
+
     if(!checkLogin()){
         return (
           <h1>Please Login</h1>
         )
       }
-
-    const [searchInput, setSearchInput] = useState('');
-    var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD'];
 
 
     return (

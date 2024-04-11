@@ -15,12 +15,6 @@ import checkLogin from '../checklogin/checkLogin';
 
 function SidePanel() {
 
-  if(!checkLogin()){
-    try { window.location = '/login'; } catch(error) {}
-    return (
-      <h1>Please Login</h1>
-    )
-  }
 
   const [user, setUser] = useState({
     image: avatar,
@@ -48,6 +42,14 @@ function SidePanel() {
 
 
   }, [])
+
+
+  if(!checkLogin()){
+    try { window.location = '/login'; } catch(error) {}
+    return (
+      <h1>Please Login</h1>
+    )
+  }
 
   var menuitems = [];
   if (user.role == 'admin') {
