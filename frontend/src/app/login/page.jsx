@@ -56,14 +56,14 @@ function Login() {
                     </div>
                     <br /><br /><br /><br />
                     <button className='submitbtn' onClick={async () => {
-                        const status = await handleSubmit(uname, pass);
-                        if (status != false && status != 'error') {
+                        const responce = await handleSubmit(uname, pass);
+                        if (responce != false && responce != 'error') {
                             localStorage.setItem('isLogedIn', true);
-                            localStorage.setItem('sessionId', status);
+                            //localStorage.setItem('sessionId', status);
 
                             //temp adjustment
-                            const userCookie = { "name": "Adithyan S Pillai", "department": "Computer Science and Engineering", "semester": "S6", "image": "https://avatars.githubusercontent.com/u/130700552?v=4", "role" : "student" };
-                            Cookies.set('user',JSON.stringify(userCookie), { expires : 1 });
+                            //const userCookie = { "name": "Adithyan S Pillai", "department": "Computer Science and Engineering", "semester": "S6", "image": "https://avatars.githubusercontent.com/u/130700552?v=4", "role" : "student" };
+                            Cookies.set('user',JSON.stringify({...responce.userdetails}), { expires : 1 });
                             document.location = './search'
                         }
                         else {

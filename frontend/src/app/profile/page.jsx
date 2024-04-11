@@ -51,12 +51,12 @@ function Profile() {
                 <h1>Profile</h1>
                 <div className='profilediv'>
                     <div className='profilepicdiv'>
-                        <Image src={profile.image} width={190} height={190} className='profilepic'></Image>
+                        <Image src={profile.profilepic} width={190} height={190} className='profilepic'></Image>
                     </div>
                     <div className='profiledetails'>
                         <h1>{profile.name}</h1>
                         <p className='profdetails'>Department : {profile.department}</p>
-                        <p className='profdetails'>Semester : {profile.semester}</p>
+                        <p className='profdetails'>Year : {profile.year}</p>
                     </div>
                 </div>
             </div>

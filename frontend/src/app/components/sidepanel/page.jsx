@@ -52,7 +52,7 @@ function SidePanel() {
   }
 
   var menuitems = [];
-  if (user.role == 'admin') {
+  if (user.role == 'admin' || user.role == 'librarian') {
     menuitems = adminItems;
   }
   else if (user.role == 'student' || user.role == 'faculty') {
@@ -63,7 +63,7 @@ function SidePanel() {
 
   return (
     <div className='sidepanel-main'>
-      <Image src={user.image || avatar} alt='Avatar' width={50} height={50} className='avatar' onClick={() => window.location = '/profile'}></Image>
+      <Image src={user.profilepic || avatar} alt='Avatar' width={40} height={40} className='avatar' onClick={() => window.location = '/profile'}></Image>
 
       {
         menuitems.map((item, index) => (

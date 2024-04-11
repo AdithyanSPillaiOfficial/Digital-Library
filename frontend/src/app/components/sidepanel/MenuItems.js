@@ -1,4 +1,4 @@
-import { faAddressCard, faBookmark, faHome, faLock, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard, faBook, faBookmark, faHome, faKey, faLock, faMagnifyingGlass, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 
 
 const userItems = [
@@ -33,6 +33,21 @@ const adminItems = [
         label : 'Add User',
         icon : faAddressCard,
         redirect : '/admin/adduser'
+    },
+    {
+        label : 'Add Students',
+        icon : faUserGroup,
+        redirect : '/admin/addstudent'
+    },
+    {
+        label : 'Manage Resources',
+        icon : faBook,
+        redirect : '/admin/resource'
+    },
+    {
+        label : 'Change Password',
+        icon : faKey,
+        redirect : '/admin/password'
     }
 ]
 
