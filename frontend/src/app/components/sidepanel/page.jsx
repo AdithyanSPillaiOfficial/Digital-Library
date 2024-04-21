@@ -28,8 +28,8 @@ function SidePanel() {
         setUser(JSON.parse(Cookies.get('user')));
       } catch (error) {
         console.error(error);
-        alert(error);
-        //window.location = '/login';
+        //alert(error);
+        window.location = '/login';
       }
     } else {
       setUser({
