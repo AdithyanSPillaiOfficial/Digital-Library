@@ -71,7 +71,7 @@ function Search() {
                     <p className='resultnum'>Results Found {resultCount}</p>
                     {
                         searchResults.map((result, index)=>(
-                            <Book {...result}/>
+                            <Book key={index} {...result}/>
                         ))
                     }
                 </div>
