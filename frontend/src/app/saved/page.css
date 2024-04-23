@@ -20,3 +20,9 @@
     margin-bottom: 40px;
     margin-right: 15px;
 }
+
+@media screen and (max-width: 600px){
+    .main-extra {
+        flex-direction: column;
+    }
+}

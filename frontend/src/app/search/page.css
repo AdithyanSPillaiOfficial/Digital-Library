@@ -160,6 +160,9 @@ h1 {
         flex-direction: column;
         overflow-x: hidden;
     }
+    .main-extra {
+        flex-direction: column;
+    }
     .sidepanel {
         width: 0;
     }
