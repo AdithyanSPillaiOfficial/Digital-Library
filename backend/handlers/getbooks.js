@@ -38,7 +38,7 @@ module.exports = async function (req, res) {
 
 
         console.log("Books matching the prompt:", books);
-        res.json({ status: 'sucess', length: books.length, results: books });
+        res.json({ status: 'sucess', rescount: books.length, results: books });
     } catch (error) {
         console.error("Error querying MongoDB:", error);
         res.status(500).json({ status: 'failed' });

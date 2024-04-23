@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
 const auth = require('./handlers/auth');
 const getbooks = require('./handlers/getbooks');
+const path = require('path');
+//const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
@@ -14,6 +16,8 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
 });
+
+//app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -58,6 +62,7 @@ app.get('/users', async (req, res) => {
 
 });
 
+app.use('/thumbnail', express.static(path.join(__dirname, 'thumb')));
 
 app.post('/auth',auth)
 

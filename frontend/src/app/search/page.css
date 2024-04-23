@@ -149,6 +149,10 @@ h1 {
     background-color: #4ba4f8;
 }
 
+.resultnum {
+    margin-bottom: 20px;
+}
+
 
 @media screen and (max-width: 600px) {
     .main {
