@@ -8,7 +8,8 @@ import { serverAddress } from '@/app/api';
 function Book(props) {
     const thumbimg = serverAddress + props.thumbnail;
     function viewHandler(){
-        alert(props.locations);
+        sessionStorage.setItem('resloc',props.locations);
+        document.location='/pdfviewer';
     }
     return (
         <div className='book'>
