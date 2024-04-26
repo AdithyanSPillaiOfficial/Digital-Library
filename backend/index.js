@@ -63,6 +63,7 @@ app.get('/users', async (req, res) => {
 });
 
 app.use('/thumbnail', express.static(path.join(__dirname, 'thumb')));
+app.use('/resources', express.static(path.join(__dirname, 'resources')));
 
 app.post('/auth',auth)
 
