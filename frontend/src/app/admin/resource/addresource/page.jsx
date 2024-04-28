@@ -160,7 +160,7 @@ function AddResource() {
                             <div className='inputdiv tagmain'>
                                 {
                                     subTopics.map((subTopic, index) => (
-                                        <div className='tagdiv' index={index}>
+                                        <div className='tagdiv' key={index}>
                                             <FontAwesomeIcon icon={faMultiply} size='2x' className='cross' onClick={()=>delSubTopic(index)}/>
                                             <input type="text" className='addedtag' value={subTopic} onChange={(e) => editSubTopic(e.target.value, index)} />
                                             
@@ -175,7 +175,7 @@ function AddResource() {
                             <div className='inputdiv tagmain'>
                                 {
                                     tags.map((tag, index) => (
-                                        <div className='tagdiv' index={index}>
+                                        <div className='tagdiv' key={index}>
                                             <FontAwesomeIcon icon={faMultiply} size='2x' className='cross' onClick={()=>delTag(index)}/>
                                             <input type="text" className='addedtag' value={tag} onChange={(e) => editTag(e.target.value, index)} />
 
