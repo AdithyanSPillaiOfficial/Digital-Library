@@ -46,9 +46,9 @@ function SidePanel() {
 
   if(!checkLogin()){
     try { window.location = '/login'; } catch(error) {}
-    return (
-      <h1>Please Login</h1>
-    )
+    // return (
+    //   <h1>Please Login</h1>
+    // )
   }
 
   var menuitems = [];

@@ -25,11 +25,11 @@ function Search() {
     const [resultCount, setResultCount] = useState(0);
     var popularSearches = ['Data Structure', 'Java', 'DBMS', 'Flat', 'Compiler Design', 'LSD'];
 
-    if(!checkLogin()){
-        return (
-          <h1>Please Login</h1>
-        )
-      }
+    // if(!checkLogin()){
+    //     return (
+    //       <h1>Please Login</h1>
+    //     )
+    //   }
 
     async function handleSearch() {
         const resdata =await searchHandler(searchInput);

@@ -1,0 +1,156 @@
+.main-extra {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: white;
+    padding: 15px;
+}
+
+
+.horizontal-line {
+    width: 100vw;
+    height: 2px;
+    background-color: #D3D3D3;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.formdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formbox {
+    border-style: solid;
+    padding: 20px;
+    padding-right: 30px;
+    min-width: 60vw;
+
+}
+
+.formhead {
+    font-size: x-large;
+}
+
+.formbody{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-column-gap: 100px;
+    grid-row-gap: 20px;
+}
+
+
+.uploadfile {
+    padding: 0;
+    margin: 5px;
+    border-radius: 0;
+    height: auto;
+}
+
+.inputlabel {
+    margin-left: 5px;
+}
+
+.inputdiv {
+    border-style: solid;
+    border-color: #00000065;
+    border-width: 1px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 0;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.choosefile {
+    overflow: hidden;
+}
+
+.tagdiv {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    align-items: center;
+    background-color: rgba(160, 160, 160, 0.205);
+    min-height: 30px;
+    border-radius: 30px;
+    padding: 5px;
+    margin: 3px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+.addedtag {
+    background-color: transparent;
+
+}
+
+.tagmain {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    overflow: hidden;
+}
+
+.btndiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploadbtn {
+    background-color: green;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.uploadbtn:hover {
+    background-color: rgb(40, 90, 40);
+}
+
+.cancelbtn {
+    background-color: red;
+    color: white;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.cancelbtn:hover {
+    background-color: rgb(145, 0, 0);
+}
+
+.cross{
+    padding: 10px;
+}
+
+.cross:hover {
+    background-color: rgba(160, 160, 160, 0.514);
+    border-radius: 80px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .page {
+        margin-left: 0;
+    }
+
+  }

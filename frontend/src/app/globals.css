@@ -120,6 +120,12 @@ a {
   overflow: auto;
 }
 
+.page {
+  margin-left: 7vw;
+  padding-left: 5px;
+  background-color: white;
+}
+
 
 /* 
 @media (prefers-color-scheme: dark) {
