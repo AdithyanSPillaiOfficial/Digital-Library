@@ -4,11 +4,13 @@ import './page.css'
 import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCross, faMultiply } from '@fortawesome/free-solid-svg-icons';
+import { handleResUpload } from './upload';
 
 function AddResource() {
 
     const [adminVerify, setAdminVerify] = useState(false);
     const [user, setUser] = useState({});
+    const [sessionid, setSessionId] = useState('')
 
     const [file, setFile] = useState(null);
     const [name, setName] = useState('');
@@ -23,6 +25,8 @@ function AddResource() {
     const [subTopicInput, setSubTopicInput] = useState('');
     const [tags, setTags] = useState([]);
     const [tagInput, setTagInput] = useState('');
+    const [semester, setSemester] = useState('');
+    
 
 
 
@@ -33,7 +37,8 @@ function AddResource() {
             const userObj = JSON.parse(newuser)
             console.log(userObj);
             if (userObj && userObj.role == 'librarian') {
-                setAdminVerify(true)
+                setAdminVerify(true);
+                setSessionId(userObj.sessionid);
             }
             else {
                 window.location = '/'
@@ -98,6 +103,33 @@ function AddResource() {
         setTags(tempArray);
     }
 
+    const handleResSubmit = async (event) => {
+        event.preventDefault();
+
+        const resObj = {
+            'file' : file,
+                'name': name,
+                'author' : author,
+                'publisher' : publisher,
+                'edition' : edition,
+                'year' :  year,
+                'department' : department,
+                'semester' : semester,
+                'subject' : subject,
+                'type' : type,
+                'subtopics' : subTopics,
+                'tags' : tags
+        };
+        const uploadResult = await handleResUpload(resObj,sessionid);
+        if(uploadResult) {
+            alert("File Uploaded")
+            //window.location.reload();
+        }
+        else {
+            alert("Upload Failed")
+        }
+    }
+
 
 
 
@@ -108,12 +140,12 @@ function AddResource() {
             <div className='formdiv'>
                 <div className='formbox'>
                     <p className='formhead'>Upload Resource</p>
-                    <form action="" className='form'>
+                    <form onSubmit={handleResSubmit} className='form' >
 
                         <div className='formbody'>
                             <div className='inputdiv choosefile'>
                                 <p>Choose File</p>
-                                <input type="file" className='uploadfile' accept='application/pdf' value={file} onChange={(e) => setFile(e.target.value)} />
+                                <input type="file" className='uploadfile' accept='application/pdf'  onChange={(e) => setFile(e.target.files)} />
                             </div>
                             <div>
                                 <p className='inputlabel'>Resource Name</p>
@@ -138,6 +170,22 @@ function AddResource() {
                             <div>
                                 <p className='inputlabel'>Department</p>
                                 <input type="text" placeholder='Department' className='inputdiv' value={department} onChange={(e) => setDepartment(e.target.value)} />
+                            </div>
+                            <div>
+                                <p className='inputlabel'>Semester</p>
+                                <input type="text" id='sem' placeholder='Semester' className='inputdiv' value={semester} onChange={(e) => setSemester(e.target.value)} hidden />
+                                <label htmlFor="sem" ></label>
+                                <select name="" className='inputdiv' id="sem" value={semester} onChange={(e) => setSemester(e.target.value)}>
+                                    <option value="">--Select--</option>
+                                    <option value="S1">S1</option>
+                                    <option value="S2">S2</option>
+                                    <option value="S3">S3</option>
+                                    <option value="S4">S4</option>
+                                    <option value="S5">S5</option>
+                                    <option value="S6">S6</option>
+                                    <option value="S7">S7</option>
+                                    <option value="S8">S8</option>
+                                </select>
                             </div>
                             <div>
                                 <p className='inputlabel'>Subject</p>

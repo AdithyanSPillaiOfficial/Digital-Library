@@ -1,5 +1,5 @@
 module.exports = async function (req, res) {
-    const database = require('../conector')
+    const database = require('../connector')
     const collectionName = "users";
     const collection = database.collection(collectionName);
 

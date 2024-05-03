@@ -1,9 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
+const multer = require('multer');
 const auth = require('./handlers/auth');
 const getbooks = require('./handlers/getbooks');
 const path = require('path');
+const uploadresource = require('./handlers/uploadresource');
+const fs = require('fs').promises;
 //const cors = require('cors');
 require('dotenv').config();
 
@@ -65,10 +68,64 @@ app.get('/users', async (req, res) => {
 app.use('/thumbnail', express.static(path.join(__dirname, 'thumb')));
 app.use('/resources', express.static(path.join(__dirname, 'resources')));
 
-app.post('/auth',auth)
+app.post('/auth', auth)
 
 
-app.post('/getbooks',getbooks)
+app.post('/getbooks', getbooks)
+
+
+
+
+
+var name = 'somename.pdf';
+
+
+async function checkDir(directoryPath) {
+    try {
+        await fs.access(directoryPath, fs.constants.F_OK); // Check if directory exists
+        console.log('Directory already exists:', directoryPath);
+        return directoryPath;
+    } catch (err) {
+        try {
+            await fs.mkdir(directoryPath, { recursive: true }); // Create directory
+            console.log('Directory created successfully:', directoryPath);
+            return directoryPath;
+        } catch (err) {
+            console.error('Error creating directory:', err);
+            return null;
+        }
+    }
+}
+
+// Set up Multer for handling file uploads
+const storage = multer.diskStorage({
+    destination: async function (req, file, cb) {
+        const [department, semester, subject, filename] = file.originalname.split('-');
+
+        const directoryPath = await checkDir(`resources/${department}/${semester}/${subject}/`);
+
+        // Check if the directory exists
+        console.log(directoryPath);
+
+
+        cb(null, directoryPath)
+    },
+    filename: function (req, file, cb) {
+        console.log(req.body);
+        const [department, semester, subject, filename] = file.originalname.split('-');
+
+        //const filename = `${name.replace(/\s/g, '_')}.pdf`;
+        cb(null, filename)
+    }
+});
+
+const upload = multer({ storage: storage });
+
+
+
+//app.post('/uploadresource',upload.array('file',100),uploadresource);
+
+app.post('/uploadresource', upload.array('pdfs', 100), uploadresource);
 
 
 
