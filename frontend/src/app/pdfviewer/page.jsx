@@ -9,6 +9,8 @@ import React, { useEffect, useState } from 'react'
 import SidePanel from "../components/sidepanel/page";
 import './page.css'
 import { serverAddress } from "../api";
+import Cookies from "js-cookie";
+var reqcount = 0;
 
 async function fetchPDFAndConvertToBlob(pdfURL) {
     try {
@@ -25,16 +27,67 @@ async function fetchPDFAndConvertToBlob(pdfURL) {
     }
 }
 
+async function reportResAccess(resloc, sessionid) {
+    try {
+        const responce = await fetch(serverAddress + '/markaccess', {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify({
+                sessionid : sessionid,
+                resloc : resloc,
+            })
+        });
+
+        if (responce.ok) {
+            const data = await responce.json();
+            console.log(data);
+            console.log('Data Fetched');
+            if (data.status === 'sucess') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    } catch (error) {
+        return 'error : ' + error;
+    }
+}
 
 function PdfViewer() {
 
     const [resloc,setResloc] = useState('');
     const newPlugin = defaultLayoutPlugin();
+    const [sessionid, setSessionId] = useState('');
+    var newuser, accessdet={};
     useEffect(() => {
         setResloc(sessionStorage.getItem('resloc'));
+        accessdet.resloc = sessionStorage.getItem('resloc');
         if (resloc == null || resloc == undefined ) {
             document.location='/search';
         }
+
+        if (newuser = Cookies.get('user')) {
+            const userObj = JSON.parse(newuser)
+            console.log(userObj);
+            if (userObj) {
+                setSessionId(userObj.sessionid);
+                accessdet.sessionid = userObj.sessionid;
+            }
+            else {
+                window.location = '/'
+            }
+        }
+        else {
+            window.location = '/login'
+        }
+
+        if(reqcount<1){
+            reportResAccess(accessdet.resloc, accessdet.sessionid);
+            reqcount = reqcount+1;
+        }
+
     }, [])
 
     return (

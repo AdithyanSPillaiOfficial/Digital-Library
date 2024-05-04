@@ -76,13 +76,13 @@ function AddResource() {
 
     function delSubTopic(index) {
         var tempArray = [...subTopics];
-        tempArray = tempArray.splice(index,1);
+        tempArray.splice(index,1);
         setSubTopics(tempArray);
     }
 
     function delTag(index) {
         var tempArray = [...tags];
-        tempArray = tempArray.splice(index,1)
+        tempArray.splice(index,1);
         setTags(tempArray);
     }
 

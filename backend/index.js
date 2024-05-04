@@ -6,6 +6,9 @@ const auth = require('./handlers/auth');
 const getbooks = require('./handlers/getbooks');
 const path = require('path');
 const uploadresource = require('./handlers/uploadresource');
+const verifyRole = require('./utilities/roleverify');
+const adduser = require('./handlers/adduser');
+const markaccess = require('./handlers/markaccess');
 const fs = require('fs').promises;
 //const cors = require('cors');
 require('dotenv').config();
@@ -69,7 +72,9 @@ app.use('/thumbnail', express.static(path.join(__dirname, 'thumb')));
 app.use('/resources', express.static(path.join(__dirname, 'resources')));
 
 app.post('/auth', auth)
-
+app.post('/verifyrole', verifyRole)
+app.post('/adduser',adduser)
+app.post('/markaccess', markaccess);
 
 app.post('/getbooks', getbooks)
 
