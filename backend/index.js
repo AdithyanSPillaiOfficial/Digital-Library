@@ -10,6 +10,7 @@ const verifyRole = require('./utilities/roleverify');
 const adduser = require('./handlers/adduser');
 const markaccess = require('./handlers/markaccess');
 const savebook = require('./handlers/savebook');
+const getsaved = require('./handlers/getsaved');
 const fs = require('fs').promises;
 //const cors = require('cors');
 require('dotenv').config();
@@ -77,6 +78,7 @@ app.post('/verifyrole', verifyRole)
 app.post('/adduser',adduser)
 app.post('/markaccess', markaccess);
 app.post('/savebook', savebook);
+app.post('/getsaved',getsaved);
 
 app.post('/getbooks', getbooks)
 
