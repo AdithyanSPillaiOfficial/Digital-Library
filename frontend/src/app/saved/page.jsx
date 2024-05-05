@@ -67,8 +67,8 @@ function Saved() {
         <div className="horizontal-line"></div>
         <div>
           {
-            savedBooks.map(book =>(
-              <Book {...book} />
+            savedBooks.map((book, index) =>(
+              <Book key={index} {...book} />
             ))
           }
         </div>
