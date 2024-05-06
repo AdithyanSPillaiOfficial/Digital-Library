@@ -59,8 +59,9 @@ function AddResource() {
 
     function addSubTopic(userinput) {
         if (userinput.charAt(userinput.length - 1) == ',') {
-            userinput = userinput.slice(0, -1);
-            setSubTopics([...subTopics, userinput]);
+            userinput = userinput.split(',');
+            userinput.pop();
+            setSubTopics([...subTopics, ...userinput]);
             setSubTopicInput('');
         }
         else {
@@ -88,8 +89,9 @@ function AddResource() {
 
     function addTag(userinput) {
         if (userinput.charAt(userinput.length - 1) == ',') {
-            userinput = userinput.slice(0, -1);
-            setTags([...tags, userinput]);
+            userinput = userinput.split(',');
+            userinput.pop();
+            setTags([...tags, ...userinput]);
             setTagInput('');
         }
         else {
