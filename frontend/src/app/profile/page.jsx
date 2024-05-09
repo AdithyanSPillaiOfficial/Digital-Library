@@ -109,7 +109,7 @@ function Profile() {
                 </div>
                 <div className='formdiv'>
                     <div className='formbox'>
-                        <p className='formhead'>Add User</p>
+                        <p className='formhead'>Change Password</p>
                         <form onSubmit={handleChangePassword} className='form' >
 
                             <div className='formbody'>

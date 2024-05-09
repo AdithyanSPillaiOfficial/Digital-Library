@@ -12,6 +12,7 @@ const markaccess = require('./handlers/markaccess');
 const savebook = require('./handlers/savebook');
 const getsaved = require('./handlers/getsaved');
 const changepassword = require('./handlers/changepassword');
+const getrecent = require('./handlers/getrecent');
 const fs = require('fs').promises;
 //const cors = require('cors');
 require('dotenv').config();
@@ -80,6 +81,7 @@ app.post('/adduser',adduser)
 app.post('/markaccess', markaccess);
 app.post('/savebook', savebook);
 app.post('/getsaved',getsaved);
+app.post('/getrecent',getrecent);
 
 app.post('/getbooks', getbooks)
 app.post('/changepassword',changepassword);

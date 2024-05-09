@@ -1,0 +1,44 @@
+
+.main-extra {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    min-height: 100vh;
+}
+
+.page {
+    padding-left: 20px;
+    padding-top: 30px;
+    margin-left: 7vw;
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+.horizontal-line {
+    width: 100vw;
+    height: 2px;
+    background-color: #D3D3D3;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.recentbooks {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Hide the scrollbar but still allow scrolling */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Optional: Provide scrollbar styles for other browsers */
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+}
