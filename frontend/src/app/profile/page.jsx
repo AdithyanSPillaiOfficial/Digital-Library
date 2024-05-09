@@ -6,41 +6,89 @@ import avatar from '../assets/avatar.jpg'
 import Image from 'next/image';
 import checkLogin from '../components/checklogin/checkLogin';
 import Cookies from 'js-cookie';
+import { serverAddress } from '../api';
 
 
 function Profile() {
 
+    const [password, setPassword] = useState('');
+    const [repassword, setRepassword] = useState('');
+
+
     const logsta = checkLogin();
     console.log(logsta)
-    
+
     useEffect(() => {
-        if( window != undefined && logsta == false){
+        if (window != undefined && logsta == false) {
             window.location = '/login';
             return (
                 null
             )
         }
     }, [])
-    
+
 
     const [profile, setProfile] = useState({
         image: avatar,
-        name : 'User Not Loged In',
-        semester : null,
+        name: 'User Not Loged In',
+        semester: null,
         department: null,
     });
 
     useEffect(() => {
-      if(Cookies.get('user') || profile == null){
-        setProfile(JSON.parse(Cookies.get('user')));
-      }
-      else {
-        window.location = '/login'
-      }
-    
-      
+        if (Cookies.get('user') || profile == null) {
+            setProfile(JSON.parse(Cookies.get('user')));
+        }
+        else {
+            window.location = '/login'
+        }
+
+
     }, [])
-    
+
+    const handleChangePassword = async (event) => {
+        event.preventDefault();
+        if (password == repassword) {
+            const sendObj = {
+                sessionid : profile.sessionid,
+                password : password
+            };
+
+            try {
+                
+                const responce = await fetch(serverAddress + '/changepassword', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    },
+                    body: JSON.stringify(sendObj)
+                });
+        
+                if (responce.ok) {
+                    const data = await responce.json();
+                    //console.log(data);
+                    console.log('Data Fetched');
+                    if (data.status === 'sucess') {
+                        //return true;
+                        alert("Password Changed Sucessfully")
+                    } else {
+                        //return false;
+                        alert("Error Occured")
+                    }
+                }
+            } catch (error) {
+                alert("Something Went Wrong");
+                return 'error : ' + error;
+                
+            }
+
+
+        }
+        else {
+            alert("Password Mismatch");
+        }
+    }
+
 
     return (
 
@@ -59,6 +107,34 @@ function Profile() {
                         <p className='profdetails'>Year : {profile.year}</p>
                     </div>
                 </div>
+                <div className='formdiv'>
+                    <div className='formbox'>
+                        <p className='formhead'>Add User</p>
+                        <form onSubmit={handleChangePassword} className='form' >
+
+                            <div className='formbody'>
+
+                                <div>
+                                    <p className='inputlabel'>New Password</p>
+                                    <input type="password" placeholder='New Password' className='inputdiv' value={password} onChange={(e) => setPassword(e.target.value)} />
+                                </div>
+                                <div>
+                                    <p className='inputlabel'>Re Enter New Password</p>
+                                    <input type="password" placeholder='Re Enter New Password' className='inputdiv' value={repassword} onChange={(e) => setRepassword(e.target.value)} />
+                                </div>
+
+                            </div>
+
+
+                            <div className='btndiv'>
+                                <button type='reset' className='cancelbtn' onClick={() => window.location.reload()}>Cancel</button>
+                                <button type='submit' className='uploadbtn'>Submit</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
             </div>
 
         </div>
